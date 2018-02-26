@@ -1,4 +1,19 @@
 # Filtering Middleware
+
+## Getting Started
+
+Install from npm:
+```
+npm install botbuilder-filter-middleware --save
+```
+Import the package:
+```
+import { filterMiddleware } from 'botbuilder-filter-middleware';
+```
+See sample for full implementation. 
+
+## Background
+
 When we .use middleware, every message we receive gets passed through it. We use middleware to gather things like intent or sentiment, or to log telemetry, or to transform messages (e.g. translation), or to intercept a message. However, we don't always want our middleware to run. For instance, sentiment analysis on text is only useful if that text is fairly long. "No" registers as having incredibly low sentiment, though it doesn't necessarily indicate a disgruntled user. In this case, we would only want to call our sentiment analysis service if our incoming message is over a specific length. 
 
 Enter middleware filtering. filterMiddleware is just a function that only runs middleware if a predicate is true.
